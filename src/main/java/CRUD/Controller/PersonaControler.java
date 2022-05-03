@@ -4,9 +4,13 @@ import CRUD.Controller.Errores.ErrorBean.BeanNotFoundException;
 import CRUD.Controller.Person.Persona;
 import CRUD.Controller.dto.PersonaInputDTO;
 import CRUD.Controller.dto.PersonaOutputDTO;
+import CRUD.Controller.feign.IFeign;
 import CRUD.Controller.servicios.PersonaService;
+import CRUD.ControllerProfesor.dto.OutputProfesorDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -19,8 +23,10 @@ public class PersonaControler {
     @Autowired
     PersonaRepository personaRepository;
 
+    private IFeign iFeign;
+
     @PostMapping("/addPersona")
-    public String addPersona(@RequestBody PersonaInputDTO persona) throws Exception{
+    public String addPersona(@RequestBody PersonaInputDTO persona) {
         try{
         personaService.addPersona(persona);
         }catch (Exception e){
@@ -30,7 +36,7 @@ public class PersonaControler {
     }
 
     @GetMapping("/getPerson/{id}")
-    public Persona getPersonById(@PathVariable String id) throws Exception {
+    public Persona getPersonById(@PathVariable String id) {
         try{
             return personaRepository.findById(id).orElseThrow(()->new Exception("No encontrado"));
         }catch (Exception e){
@@ -57,7 +63,7 @@ public class PersonaControler {
     }
 
     @DeleteMapping("/delete/{id}")
-    public String deletePersonaById(@PathVariable String id) throws Exception {
+    public String deletePersonaById(@PathVariable String id) {
         try{
         personaService.deletedById(id);
         }catch (Exception e){
@@ -67,6 +73,17 @@ public class PersonaControler {
 
     }
 
+    @GetMapping("/IFeign/{id}")
+    public ResponseEntity findProfesorUsingFeign(@PathVariable String id){
+        ResponseEntity<OutputProfesorDTO> profesor = iFeign.getProfesor(id);
+        return ResponseEntity.ok(profesor.getBody());
+    }
+
+    @GetMapping("person/profesor/{id}")
+    public ResponseEntity<OutputProfesorDTO> buscarProfesor(@PathVariable String id){
+        ResponseEntity<OutputProfesorDTO> rs = new RestTemplate().getForEntity("http://localhost:8081/profesor/getProfesor/"+id,OutputProfesorDTO.class);
+        return ResponseEntity.ok(rs.getBody());
+    }
 
 
 }

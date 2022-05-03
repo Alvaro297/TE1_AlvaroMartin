@@ -22,16 +22,15 @@ public class StudentControler {
     @Autowired
     StudentService studentService;
 
-    @PostMapping(value = "/addStudent")
+    @PostMapping("/addStudent")
     public ResponseEntity<?> addStudent(@RequestBody InputStudentDto student) throws Exception{
 
-        System.out.println("En el controlador addStudent");
 
         return studentService.addPersona(student);
 
     }
 
-    @GetMapping(value = "/student/{id}")
+    @GetMapping("/student/{id}")
     public ResponseEntity getStudent(@PathVariable String id, @RequestParam(defaultValue = "simple") String outputType) throws Exception{
 
         if(outputType.equals("simple")){
@@ -48,31 +47,31 @@ public class StudentControler {
 
 
 
-    @GetMapping(value = "/getStudentAllStudent")
+    @GetMapping("/getStudentAllStudent")
     public List<Student> getStudents(){
         return studentRepository.findAll();
     }
 
-    @GetMapping(value = "/getStudent/{id}")
+    @GetMapping("/getStudent/{id}")
     public Optional<Student> getStudentById(@PathVariable String id) throws Exception{
         return studentRepository.findById(id);
     }
 
-    @DeleteMapping(value = "/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteProfesorById(@PathVariable String id) throws Exception{
         studentService.deletedById(id);
         return "El estudiante con id "+id+" ha sido eliminado de la base de datos";
 
     }
 
-    @PutMapping(value = "/addSubjectStudent/{idStudent}")
+    @PutMapping("/addSubjectStudent/{idStudent}")
     public ResponseEntity addAsignatura(@PathVariable String idStudent, @RequestBody List<String> ids) throws Exception{
 
         return studentService.addAsignaturas(idStudent, ids);
 
     }
 
-    @PutMapping(value = "/removeSubjectsStudent/{idStudent}")
+    @PutMapping("/removeSubjectsStudent/{idStudent}")
     public ResponseEntity removeAsignatura(@PathVariable String idStudent, @RequestBody List <String> ids) throws Exception{
 
         return studentService.removeAsignaturas(idStudent, ids);
