@@ -75,7 +75,7 @@ public class PersonaControler {
 
     @GetMapping("/IFeign/{id}")
     public ResponseEntity findProfesorUsingFeign(@PathVariable String id){
-        ResponseEntity<OutputProfesorDTO> profesor = iFeign.getProfesor(id);
+        ResponseEntity<OutputProfesorDTO> profesor = iFeign.getProfesorById(id);
         return ResponseEntity.ok(profesor.getBody());
     }
 

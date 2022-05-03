@@ -10,5 +10,5 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface IFeign {
 
     @GetMapping("person/profesor/{id}")
-    ResponseEntity<OutputProfesorDTO> getProfesor(@PathVariable String id);
+    ResponseEntity<OutputProfesorDTO> getProfesorById(@PathVariable String id);
 }
