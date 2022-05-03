@@ -22,12 +22,12 @@ public class OutputStudentDto {
     private Integer num_hours_week;
 
     public OutputStudentDto(Student student) {
-        setId_student(student.getId_student());
+        setId_student(student.getIdStudent());
         setMateria(student.getMateria());
         setComentarios(student.getComentarios());
         setPerson(student.getPersona().getPersonId());
         setProfesorId(student.getProfesor().getIdProfesor());
-        setNum_hours_week(student.getNum_hours_week());
+        setNum_hours_week(student.getNumHoursWeek());
         setSubjects(student.getSubjects());
     }
 

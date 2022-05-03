@@ -104,7 +104,7 @@ public class StudentService implements StudentI {
         //realizo dos bucles para comprobar si algun id de asignatura coincide con los ids pasados
         for (Subject subject : subjectsFromStudentToMap) {
             for (String id : ids) {
-                if (subject.getId_subject().equals(id)) {
+                if (subject.getIdSubject().equals(id)) {
                     Subject subjectToDelete = subjectRepository.findById(id).get();
                     subjectsFromStudent.remove(subjectToDelete);
                     subject.getStudents().remove(student.get());

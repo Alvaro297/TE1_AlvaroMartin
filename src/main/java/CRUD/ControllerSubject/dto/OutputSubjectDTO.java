@@ -20,11 +20,11 @@ public class OutputSubjectDTO {
     private Date finish_date;
 
     public OutputSubjectDTO(Subject subject){
-        setId_subject(subject.getId_subject());
+        setId_subject(subject.getIdSubject());
         setStudents(subject.getStudents());
-        setSubject_name(subject.getSubject_name());
+        setSubject_name(subject.getSubjectName());
         setComents(subject.getComentarios());
-        setInitial_date(subject.getInitial_date());
-        setFinish_date(subject.getFinish_date());
+        setInitial_date(subject.getInitialDate());
+        setFinish_date(subject.getFinishDate());
     }
 }

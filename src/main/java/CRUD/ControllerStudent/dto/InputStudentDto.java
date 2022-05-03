@@ -15,19 +15,19 @@ public class InputStudentDto {
 
     private String materia;
     private String comentarios;
-    private String id_student;
+    private String idStudent;
     private List<Subject> subjects;
     private String person;
     private String profesorId;
-    private Integer num_hours_week;
+    private Integer numHoursWeek;
 
     public InputStudentDto(Student student) {
-        setId_student(student.getId_student());
+        setIdStudent(student.getIdStudent());
         setMateria(student.getMateria());
         setComentarios(student.getComentarios());
         setPerson(student.getPersona().getPersonId());
         setProfesorId(student.getProfesor().getIdProfesor());
-        setNum_hours_week(student.getNum_hours_week());
+        setNumHoursWeek(student.getNumHoursWeek());
         setSubjects(student.getSubjects());
     }
 

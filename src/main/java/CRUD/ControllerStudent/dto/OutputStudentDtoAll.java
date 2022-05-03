@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
-import java.util.Optional;
 
 @Getter
 @Setter
@@ -25,10 +24,10 @@ public class OutputStudentDtoAll {
 
 
     public OutputStudentDtoAll(Student student){
-        setId_student(student.getId_student());
+        setId_student(student.getIdStudent());
         setMateria(student.getMateria());
         setComentarios(student.getComentarios());
-        setNum_hours_week(student.getNum_hours_week());
+        setNum_hours_week(student.getNumHoursWeek());
         setSubjects(student.getSubjects());
         setPersona(student.getPersona());
     }

@@ -19,9 +19,9 @@ import java.util.List;
 @NoArgsConstructor
 public class Subject {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_su")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "subject")
     @GenericGenerator(
-            name = "seq_su",
+            name = "subject",
             strategy = "CRUD.StringPrefixedSequenceIdGenerator",
             parameters = {
                     @Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "1"),
@@ -29,7 +29,7 @@ public class Subject {
                     @Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%10d")
             }
     )
-    private String id_subject;
+    private String idSubject;
 
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
@@ -43,22 +43,22 @@ public class Subject {
     @JsonIgnore
     private List<Student> students;
 
-    private String subject_name;
+    private String subjectName;
 
     @Column(name= "coments")
     private String comentarios;
 
-    private Date initial_date;
+    private Date initialDate;
 
-    private Date finish_date;
+    private Date finishDate;
 
 
     public Subject(InputSubjectDTO inputSubjectDTO){
-        setId_subject(inputSubjectDTO.getId_subject());
+        setIdSubject(inputSubjectDTO.getIdSubject());
         setComentarios(inputSubjectDTO.getComents());
         setStudents(inputSubjectDTO.getStudents());
-        setFinish_date(inputSubjectDTO.getFinish_date());
-        setInitial_date(inputSubjectDTO.getInitial_date());
-        setSubject_name(inputSubjectDTO.getSubject_name());
+        setFinishDate(inputSubjectDTO.getFinishDate());
+        setInitialDate(inputSubjectDTO.getInitialDate());
+        setSubjectName(inputSubjectDTO.getSubjectName());
     }
 }

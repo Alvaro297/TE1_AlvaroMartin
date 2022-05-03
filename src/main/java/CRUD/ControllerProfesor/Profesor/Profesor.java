@@ -24,9 +24,9 @@ import java.util.List;
 @Data
 public class Profesor {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ausencias_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "profesor")
     @GenericGenerator(
-            name = "ausencias_seq",
+            name = "profesor",
             strategy = "CRUD.StringPrefixedSequenceIdGenerator",
             parameters = {
                     @Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "1"),

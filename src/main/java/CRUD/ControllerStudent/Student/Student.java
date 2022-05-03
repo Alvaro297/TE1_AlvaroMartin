@@ -23,9 +23,9 @@ public class Student {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqE")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student")
     @GenericGenerator(
-            name = "seqE",
+            name = "student",
             strategy = "CRUD.StringPrefixedSequenceIdGenerator",
             parameters = {
                     @Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "1"),
@@ -33,7 +33,7 @@ public class Student {
                     @Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%04d")
             }
     )
-    private String id_student;
+    private String idStudent;
 
     @ManyToMany(mappedBy = "students")
     private List<Subject> subjects;
@@ -44,7 +44,7 @@ public class Student {
     Persona persona;
 
     @NotNull
-    private Integer num_hours_week;
+    private Integer numHoursWeek;
 
     @NotNull
     @Column(name = "branch")
@@ -59,10 +59,10 @@ public class Student {
 
     public Student(InputStudentDto studentDto) throws Exception {
 
-        setId_student(studentDto.getId_student());
+        setIdStudent(studentDto.getIdStudent());
         setMateria(studentDto.getMateria());
         setComentarios(studentDto.getComentarios());
-        setNum_hours_week(studentDto.getNum_hours_week());
+        setNumHoursWeek(studentDto.getNumHoursWeek());
         setSubjects(studentDto.getSubjects());
     }
 

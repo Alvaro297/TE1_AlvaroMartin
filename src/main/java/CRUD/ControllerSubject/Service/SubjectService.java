@@ -17,7 +17,7 @@ public class SubjectService implements SubjectI{
     @Override
     public OutputSubjectDTO addSubject(InputSubjectDTO subjectDto) throws Exception {
 
-        if (subjectDto.getSubject_name().isBlank()) {
+        if (subjectDto.getSubjectName().isBlank()) {
             throw new Exception("Debe tener un nombre la asignatura");
         } else {
             Subject subject = new Subject(subjectDto);

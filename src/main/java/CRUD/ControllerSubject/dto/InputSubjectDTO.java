@@ -11,19 +11,19 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class InputSubjectDTO {
-    private String id_subject;
+    private String idSubject;
     private List<Student> students;
-    private String subject_name;
+    private String subjectName;
     private String coments;
-    private Date initial_date;
-    private Date finish_date;
+    private Date initialDate;
+    private Date finishDate;
 
     public InputSubjectDTO(Subject subject){
-        setId_subject(subject.getId_subject());
+        setIdSubject(subject.getIdSubject());
         setStudents(subject.getStudents());
-        setSubject_name(subject.getSubject_name());
+        setSubjectName(subject.getSubjectName());
         setComents(subject.getComentarios());
-        setInitial_date(subject.getInitial_date());
-        setFinish_date(subject.getFinish_date());
+        setInitialDate(subject.getInitialDate());
+        setFinishDate(subject.getFinishDate());
     }
 }
